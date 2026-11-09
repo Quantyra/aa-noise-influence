@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-09",
+  "scope": "Assistant visual inspection of all rendered PDF pages; not independent mathematical review",
+  "pdf_sha256": "7cd7868d5063749cbf106a7a57e55ec206aa6996bf4857aba4dfa0ee51e813c4",
+  "pages_inspected": [1, 2, 3, 4, 5],
+  "render_dpi": 100,
+  "clipping_or_overlap_observed": false,
+  "missing_glyph_observed": false,
+  "all_fonts_embedded": true,
+  "embedded_font_count": 19,
+  "nonfatal_environment_message": "Fontconfig default configuration unavailable; message retained in build receipt, no rendered defect observed",
+  "verdict": "PASS_DOCUMENT_LAYOUT"
+}

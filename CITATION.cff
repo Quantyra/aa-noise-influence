@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "Please cite the manuscript in preferred-citation. This is a repository draft; no DOI or tagged release exists yet. Identify the commit when citing this draft."
+type: software
+title: "Noise smoothing sharpens a quantitative Aaronson-Ambainis influence bound: manuscript archive"
+version: 0.1.0
+authors:
+  - family-names: Fredriksen
+    given-names: Daniel
+    affiliation: Quantyra Inc.
+    orcid: https://orcid.org/0009-0002-9123-7435
+license: CC-BY-4.0
+repository-code: https://github.com/Quantyra/aa-noise-influence
+url: https://github.com/Quantyra/aa-noise-influence
+keywords:
+  - Aaronson-Ambainis conjecture
+  - Boolean function analysis
+  - influence
+  - noise operator
+  - quantum query complexity
+preferred-citation:
+  type: article
+  title: "Noise smoothing sharpens a quantitative Aaronson-Ambainis influence bound"
+  authors:
+    - family-names: Fredriksen
+      given-names: Daniel
+      affiliation: Quantyra Inc.
+      orcid: https://orcid.org/0009-0002-9123-7435
+  year: 2026
+  notes: "Version 0.1.0 manuscript draft; no DOI or tagged release."
+  url: https://github.com/Quantyra/aa-noise-influence/blob/main/manuscript/main.pdf

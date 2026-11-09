@@ -1,0 +1,24 @@
+{
+  "title": "Noise smoothing sharpens a quantitative Aaronson-Ambainis influence bound",
+  "description": "Research preprint archive including the manuscript PDF, LaTeX source and document checks. Noise smoothing and classical Bernstein control, composed with Turturean's influence theorem, give max_i Inf_i(f) >= sqrt(45)/(16000 pi^4) Var(f)^(5/2)/d^(11/2) for every bounded real multilinear polynomial on the uniform sign cube. The note includes an explicit average-input query consequence, without a polynomial-runtime claim. This is a quantitative corollary of attributed results; no independent AA proof, peer review, formal certification or established priority is claimed. OpenAI Codex assisted with mathematical derivation, source comparison, drafting and package preparation.",
+  "version": "0.1.0",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "creators": [
+    {
+      "name": "Fredriksen, Daniel",
+      "affiliation": "Quantyra Inc.",
+      "orcid": "0009-0002-9123-7435"
+    }
+  ],
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "language": "eng",
+  "keywords": [
+    "Aaronson-Ambainis conjecture",
+    "Boolean function analysis",
+    "influence",
+    "noise operator",
+    "quantum query complexity"
+  ]
+}

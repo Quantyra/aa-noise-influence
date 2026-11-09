@@ -1,0 +1,216 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Noise smoothing sharpens a quantitative Aaronson--Ambainis influence bound},pdfauthor={Daniel Fredriksen}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Inf}{\operatorname{Inf}}
+\newcommand{\csm}{c_{\mathrm{sm}}}
+\newcommand{\Q}{\{-1,1\}^n}
+\title{Noise smoothing sharpens a quantitative\newline Aaronson--Ambainis influence bound}
+\author{Daniel Fredriksen\\\small Quantyra Inc.\\\small\href{https://orcid.org/0009-0002-9123-7435}{ORCID: 0009-0002-9123-7435}}
+\date{November 9, 2026\\\small Version 0.1.0 manuscript draft; no tagged release}
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $f:\Q\to[-1,1]$ be a real multilinear polynomial of degree at most $d\ge1$, with variance $V>0$ under the uniform measure. Combining Turturean's influence theorem with classical interior Bernstein control after noise smoothing gives
+\[
+ \max_i\Inf_i(f)\ge \frac{\sqrt{45}}{16000\pi^4}\,
+                    \frac{V^{5/2}}{d^{11/2}},
+ \qquad \Inf_i(f)=\E\left[\left(\frac{f(X)-f(X^{\oplus i})}{2}\right)^2\right].
+\]
+The degree exponent improves from $6$ to $11/2$ in the displayed general bound of the cited theorem, while retaining its variance exponent. This is a short corollary of existing results. We give all smoothing losses and an explicit average-input query consequence. Neither an independent proof of the Aaronson--Ambainis conjecture nor a polynomial-time classical simulation is obtained.
+\end{abstract}
+
+\section{Statement and contribution}
+Throughout, $X$ is uniform on $\Q$, and $X^{\oplus i}$ denotes $X$ with its $i$th sign reversed. All expectations and variances use this measure. Put
+\[
+ J(f)=\max_{1\le i\le n}\Inf_i(f),\qquad
+ L(f)=\sum_{i=1}^n\E|f(X)-f(X^{\oplus i})|.
+\]
+In particular, $L$ uses full edge differences whereas $\Inf_i$ uses squared half differences. Positive variance excludes a constant function and implies $n\ge1$.
+
+The Aaronson--Ambainis influence conjecture asks for a lower bound on $J(f)$ that is polynomial in the variance and inverse degree, independently of $n$. Its connection to average-input query simulation is developed in~\cite{AA}. Turturean~\cite{T} obtains the explicit bound
+\begin{equation}\label{eq:old}
+ J(f)\ge \frac{\sqrt{15}}{500\pi^4}\frac{\Var(f)^{5/2}}{d^6}.
+\end{equation}
+We use the row and influence theorems from the pinned version of that work as imported results. Our statement concerns their quantitative composition with classical smoothing.
+
+\begin{theorem}\label{thm:main}
+Let $d\ge1$ be an integer and let $f:\Q\to[-1,1]$ have multilinear degree at most $d$ and variance $V>0$. Then
+\begin{equation}\label{eq:main}
+ J(f)\ge\csm\frac{V^{5/2}}{d^{11/2}},\qquad
+ \csm=\frac{\sqrt{45}}{16000\pi^4}.
+\end{equation}
+More precisely, for every $0<\rho<1$,
+\begin{equation}\label{eq:rho}
+ J(f)\ge\frac{\sqrt{15}}{250\pi^4}
+     \rho^{5d-3}\sqrt{1-\rho^2}\,\frac{V^{5/2}}{d^5}.
+\end{equation}
+\end{theorem}
+
+No homogeneity assumption, variance floor or restriction on the dimension is required. Constants are not optimized. The new statement improves the degree exponent of~\eqref{eq:old}, not every numerical instance of that bound. In fact the ratio of the right-hand sides of~\eqref{eq:main} and~\eqref{eq:old} is $\sqrt{3d}/32$; the simpler constant in~\eqref{eq:main} gives a larger lower bound for integer $d\ge342$. One can always retain the maximum of valid bounds, including~\eqref{eq:rho}. Constant refinements in the cited work remain compatible with this argument.
+
+\paragraph{Relation to earlier methods.}
+Filmus, Hatami, Keller and Lifshitz~\cite[Proposition 3.2 and Section 5.1]{FHKL} already use interior Bernstein control and noise smoothing to study total $L_1$ influence. Their general unsmoothing argument leaves an inverse-noise norm ratio to control. Here the influence theorem is applied directly to the smoothed polynomial. Squared influences then transfer back by Fourier contraction, so that inverse-noise estimate is unnecessary. The row bound used below is attributed to Agarwal and Ben-David~\cite[Theorem 1.7]{ABD}, as explained in~\cite[Section 6]{T}; we use the more conservative constant stated in the latter source. The composition, rather than either imported ingredient, is the contribution presented in this note. No exhaustive priority claim is made.
+
+\section{Imported theorem and smoothing estimates}
+A row for a function $q$ at $x\in\Q$ is a vector $a^x\in[0,\infty)^n$ such that
+\begin{equation}\label{eq:row}
+ |q(x)-q(y)|\le\sum_{i:x_i\ne y_i}a_i^x\qquad(y\in\Q).
+\end{equation}
+Its cost is $\sum_i a_i^x$.
+
+\begin{proposition}[Imported row and influence bounds]\label{prop:import}
+The following two statements are used from~\cite[Sections 6 and 8]{T}.
+\begin{enumerate}
+\item Every $q:\Q\to[-1,1]$ of degree at most $d$ has a row of cost at most $\pi^2d^2$ at every point.
+\item If $\Var(q)>0$ and every point admits a row of cost at most $K$, then
+\begin{equation}\label{eq:import}
+ J(q)\ge a\frac{\Var(q)^{5/2}}{L(q)K^2},\qquad a=\frac{\sqrt{15}}{125}.
+\end{equation}
+\end{enumerate}
+\end{proposition}
+The second statement applies to real-valued $q$ without an additional range assumption. Its normalization agrees with the definitions above. These imported statements are not reproved or newly formally verified here.
+
+Write $f(x)=\sum_{S\subseteq[n]}\widehat f(S)x_S$, where $x_S=\prod_{i\in S}x_i$. The same expression defines its multilinear extension to $[-1,1]^n$. This extension remains bounded by one: at a point $z$, its value is the expectation of $f(Y)$ for independent signs satisfying $\E Y_i=z_i$.
+
+For $0<\rho<1$, define the noise operator by
+\[
+ h=T_\rho f,\qquad \widehat h(S)=\rho^{|S|}\widehat f(S).
+\]
+Equivalently, $h(x)=f(\rho x)$. It also equals an average of $f$ under independent coordinate noise. Thus $|h|\le1$ and $\deg h\le d$. Parseval gives
+\begin{align}
+ \Var(h)&=\sum_{S\ne\varnothing}\rho^{2|S|}\widehat f(S)^2
+             \ge\rho^{2d}V,\label{eq:var}\\
+ \Inf_i(h)&=\sum_{S\ni i}\rho^{2|S|}\widehat f(S)^2
+             \le\rho^2\Inf_i(f).\label{eq:inf}
+\end{align}
+The derivative $\partial_i f$ is independent of $x_i$, whereas the signed half difference is $x_i\partial_i f(x)$. Their absolute values agree at cube vertices; the distinction matters in commuting derivatives with noise.
+
+\begin{lemma}[Classical interior Bernstein control]\label{lem:bern}
+Under the assumptions of Theorem~\ref{thm:main},
+\begin{equation}\label{eq:L}
+ L(T_\rho f)\le\frac{2\rho d}{\sqrt{1-\rho^2}}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The interior derivative inequality in~\cite[Proposition 3.2]{FHKL}, applied on the unit ball of the infinity norm, gives
+\[
+ \sum_i|\partial_i f(\rho x)|\le\frac{d}{\sqrt{1-\rho^2}}
+ \qquad(x\in\Q).
+\]
+For clarity, it also follows directly from the classical trigonometric Bernstein inequality. Choose $v_i\in\{-1,1\}$ with the sign of $\partial_i f(\rho x)$ and consider
+\[
+ R(\theta)=f\bigl(\rho x\cos\theta+\sqrt{1-\rho^2}\,v\sin\theta\bigr).
+\]
+Each coordinate of the argument lies in $[-1,1]$, since its sinusoidal amplitude is one. Hence $|R(\theta)|\le1$, and $R$ is a trigonometric polynomial of degree at most $d$. Bernstein gives $|R'(0)|\le d$, which is exactly the displayed gradient bound after dividing by $\sqrt{1-\rho^2}$. Finally, multilinearity and the chain rule imply
+\[
+ L(h)=2\sum_i\E|\partial_i h(X)|
+     =2\rho\E\sum_i|\partial_i f(\rho X)|.
+\]
+This proves~\eqref{eq:L}.
+\end{proof}
+
+\section{Proof of the influence bound}
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Apply Proposition~\ref{prop:import} to $h=T_\rho f$, with $K=\pi^2d^2$. Its hypotheses hold because $h$ is bounded by one, has degree at most $d$, and has positive variance by~\eqref{eq:var}. Equations~\eqref{eq:var}--\eqref{eq:L} give
+\begin{align*}
+ J(f)&\ge\rho^{-2}J(h)\\
+ &\ge\rho^{-2}\frac{a\rho^{5d}V^{5/2}}
+             {(2\rho d/\sqrt{1-\rho^2})\pi^4d^4}\\
+ &=\frac{a}{2\pi^4}\rho^{5d-3}\sqrt{1-\rho^2}
+          \frac{V^{5/2}}{d^5}.
+\end{align*}
+This is~\eqref{eq:rho}.
+
+For the uniform explicit constant, choose $\rho=1-1/(2d)$. Bernoulli's inequality yields $\rho^d\ge1/2$, so $\Var(h)\ge V/4$. Also
+\[
+ 1-\rho^2=\frac1d-\frac1{4d^2}\ge\frac{3}{4d},\qquad
+ L(h)\le\frac4{\sqrt3}d^{3/2}.
+\]
+Using the weaker contraction $J(f)\ge J(h)$ for simplicity,
+\[
+ J(f)\ge\frac{a(V/4)^{5/2}}{(4/\sqrt3)d^{3/2}\pi^4d^4}
+       =\frac{\sqrt{45}}{16000\pi^4}\frac{V^{5/2}}{d^{11/2}}.
+\]
+No approximation error or variance normalization is introduced: smoothing is an exact analytic operation, and the influential coordinate is an original coordinate of $f$.
+\end{proof}
+
+\paragraph{Losses and limits.}
+The variance exponent remains $5/2$, and the row cost remains quadratic in $d$. Relative to the stronger target $J(f)\ge cV^2/d^4$, the guarantee in~\eqref{eq:main} is smaller by a factor proportional to $\sqrt V/d^{3/2}$. This argument therefore does not establish that stronger target. It also does not prove a bound of order $d^{3/2}$ for $L(f)$ itself: the improved edge estimate is for $T_\rho f$. For small variance, other bounds can be stronger; there is no claim of pointwise domination of all known estimates.
+
+\section{An explicit average-input query consequence}
+The standard influence-to-query framework is due to Aaronson and Ambainis~\cite{AA}. We record a sufficient bound with its error accounting. The statement is about a decision tree for a fixed known polynomial; computation used to construct its queries and leaf values is unrestricted.
+
+\begin{corollary}\label{cor:query}
+Let $f:\Q\to[-1,1]$ have degree at most $d\ge1$, and let $0<\epsilon,\delta<1$. There is a deterministic decision tree that approximates $f(X)$ to additive error $\epsilon$ except on a set of uniform measure at most $\delta$, using at most
+\begin{equation}\label{eq:M}
+ \min\!\left\{n,\left\lceil\frac{2^{7/2}}{\csm}
+       d^{13/2}\epsilon^{-5}\delta^{-7/2}\right\rceil\right\}
+\end{equation}
+queries on every input.
+\end{corollary}
+\begin{proof}
+For a restriction $q$ of $f$, use the potential
+\[
+ \Phi(q)=\sum_i\Inf_i(q)=\sum_S|S|\widehat q(S)^2
+               \le d\Var(q)\le d.
+\]
+If coordinate $i$ is queried, its sign is still uniform conditional on the previous transcript. Averaging the two restricted Fourier expansions gives the exact drift
+\begin{equation}\label{eq:drift}
+ \Phi(q)-\E[\Phi(q_{i=X_i})\mid q]=\Inf_i(q).
+\end{equation}
+Indeed, a coefficient whose set contains $i$ loses one from its contribution's degree weight; the cross terms from the two signs cancel. This uses total squared influence, not variance: the corresponding variance drop would only be $\widehat q(\{i\})^2$.
+
+Set $\eta=\epsilon^2\delta/2$. While $\Var(q)>\eta$, query a maximum-influence coordinate, breaking ties deterministically. Every restriction is still bounded by one and has degree at most $d$. Theorem~\ref{thm:main} and~\eqref{eq:drift} give conditional expected potential decrease at least $\csm\eta^{5/2}/d^{11/2}$. The stopping time $\tau$ is at most $n$, because after all coordinates are fixed the variance is zero. Summing the finite drift identity therefore gives
+\[
+ \E\tau\le\frac{d^{13/2}}{\csm\eta^{5/2}}.
+\]
+Cap the procedure at $M=\lceil2d^{13/2}/(\csm\eta^{5/2}\delta)\rceil$ queries, or query all $n$ coordinates if $n<M$. Markov's inequality bounds the probability of an unfinished capped path by $\delta/2$. At a stopped leaf, return the exact conditional mean. Conditional Chebyshev bounds its error probability by $\eta/\epsilon^2=\delta/2$. Returning any fixed bounded value on unfinished paths gives total failure probability at most $\delta$, and substitution for $\eta$ yields~\eqref{eq:M}. If the initial variance is already at most $\eta$, no query is needed.
+\end{proof}
+
+The acceptance polynomial of a $T$-query quantum algorithm has degree at most $2T$ and takes values in $[0,1]$; see~\cite{AA}. For $T\ge1$, Corollary~\ref{cor:query} consequently gives the sufficient bound
+\[
+ O\!\left(T^{13/2}\epsilon^{-5}\delta^{-7/2}\right)
+\]
+for approximating its acceptance probability on a $1-\delta$ fraction of uniform inputs. Applying the same potential argument to~\eqref{eq:old} instead yields $O(T^7\epsilon^{-5}\delta^{-7/2})$. This comparison is between these two sufficient guarantees, not an optimality assertion.
+
+The decision tree may require exponential work to identify the next coordinate, evaluate its influences or compute the stopping variance and leaf means. No efficient oracle for those operations is assumed. Thus the query consequence gives no polynomial-time classical simulation, worst-case-input guarantee, or conclusion about equality or separation of BPP and BQP.
+
+\section*{Verification and disclosure}
+The proof in this note is an analytic composition of the explicitly identified imported results. Internal checks cover the normalizations, smoothing losses, constants and finite decision-tree argument. No independent peer review or new formal verification of this corollary is claimed, and the formalization associated with~\cite{T} is not a formalization of the present manuscript. The accompanying repository records the focused source comparison, build checks and limitations. Those checks do not establish publication priority.
+
+OpenAI Codex assisted with the mathematical derivation, source comparison, manuscript drafting and package preparation under the author's research direction. The manuscript is supplied as a working draft. The mathematical claims are the stated theorems and their dependencies; AI assistance and a successful document build are not evidence of independent review.
+
+\begin{thebibliography}{9}
+\bibitem{AA} Scott Aaronson and Andris Ambainis.
+\emph{The need for structure in quantum speedups}.
+Theory of Computing 10 (2014), 133--166.
+\href{https://arxiv.org/abs/0911.0996v3}{arXiv:0911.0996v3}.
+
+\bibitem{ABD} Avantika Agarwal and Shalev Ben-David.
+\emph{Oracle separations for the quantum-classical polynomial hierarchy}.
+\href{https://arxiv.org/abs/2410.19062v2}{arXiv:2410.19062v2}, 2025.
+Theorem numbering refers to this version.
+
+\bibitem{FHKL} Yuval Filmus, Hamed Hatami, Nathan Keller and Noam Lifshitz.
+\emph{On the sum of the $L_1$ influences of bounded functions}.
+Israel Journal of Mathematics 214 (2016), 167--192.
+We use \href{https://arxiv.org/abs/1404.3396v3}{arXiv:1404.3396v3}, March 28, 2015.
+
+\bibitem{T} David Turturean.
+\emph{A proof of the Aaronson--Ambainis conjecture}.
+Physical Superintelligence, November 2026.
+\href{https://github.com/physical-superintelligence/aaronson-ambainis/blob/2a6ceaef872ae993708950f951989134084b851a/paper/aaronson_ambainis_paper.tex}{Manuscript at repository commit \texttt{2a6ceaef872a}}.
+The imported statements are labelled \texttt{thm:row} and \texttt{thm:infl} in its source.
+\end{thebibliography}
+\end{document}
