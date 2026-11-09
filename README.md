@@ -4,7 +4,7 @@
 
 [Read the manuscript PDF](manuscript/main.pdf) · [LaTeX source](manuscript/main.tex) · [Review and scope](REVIEW.md) · [Zenodo setup](publication/README.md)
 
-Version **0.1.0 manuscript draft**. No GitHub release, Zenodo record or DOI has been created for this package. Repository availability is not peer review or formal certification.
+Version **0.1.0 preprint release candidate**. Zenodo's GitHub release webhook was confirmed active on November 9, 2026. No GitHub release, Zenodo record or DOI has been created for this package. The [proposed release notes](publication/RELEASE-NOTES-v0.1.0.md) are ready for the exact release decision. Repository availability is not peer review or formal certification.
 
 For every real multilinear polynomial `f : {-1,1}^n -> [-1,1]` of degree at most `d >= 1` and uniform variance `V > 0`, the note proves the corollary
 
@@ -31,8 +31,8 @@ The build uses Tectonic's standard TeX bundle; an uncached environment may need 
 
 ## Cite and archive
 
-Until a DOI exists, cite Daniel Fredriksen, *Noise smoothing sharpens a quantitative Aaronson-Ambainis influence bound*, manuscript draft, 2026, and identify the repository commit. [CITATION.cff](CITATION.cff) provides the manuscript as the preferred citation. There is no invented DOI or publication date in the metadata.
+Until a DOI exists, cite Daniel Fredriksen, *Noise smoothing sharpens a quantitative Aaronson-Ambainis influence bound*, research preprint, 2026, and identify the repository commit. [CITATION.cff](CITATION.cff) provides the manuscript as the preferred citation. There is no invented DOI or publication date in the metadata.
 
-The root [.zenodo.json](.zenodo.json) describes a **publication/preprint**, including the PDF and its source. It takes precedence over CITATION.cff for Zenodo's GitHub ingestion. Enable this repository on [Zenodo's GitHub settings](https://zenodo.org/account/settings/github/), then use the documented release checklist. Connecting the repository does not itself create the first archive; a subsequent published GitHub release triggers it. No workflow here publishes automatically.
+The root [.zenodo.json](.zenodo.json) describes a **publication/preprint**, including the PDF and its source. It takes precedence over CITATION.cff for Zenodo's GitHub ingestion. The repository is enabled on Zenodo; use the [documented release checklist](publication/README.md) for the next step. Connecting the repository does not itself create the first archive; a subsequent published GitHub release triggers it. No workflow here publishes automatically.
 
 All original package material is available under [CC BY 4.0](LICENSE). External papers are linked and cited, not redistributed. OpenAI Codex assisted with derivation, source comparison, drafting and package preparation; no independent peer review or formal verification of this corollary is claimed.

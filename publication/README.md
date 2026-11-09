@@ -1,6 +1,6 @@
 # Zenodo setup and first release
 
-Candidate version: 0.1.0. Status: repository manuscript draft; no tagged release or DOI. This file is a preparation guide, not a publication receipt or release instruction.
+Candidate version: 0.1.0. Status: preprint release candidate; no tagged release or DOI. The user confirmed Zenodo enablement on 2026-11-09, and GitHub reports an active release-event webhook to Zenodo. Connection is complete; exact release authorization remains pending. This file is a preparation guide, not a publication receipt or release instruction.
 
 ## Enable the repository
 
@@ -25,4 +25,4 @@ Zenodo's GitHub integration archives the repository release. A PDF is included i
 - Verify the actual Zenodo record, metadata, files and version/concept DOI before recording publication success. Reuse an existing DOI where appropriate; do not invent or pre-fill one.
 - Add the verified DOI to citation/repository metadata in a follow-up commit. If putting a DOI inside the first PDF is essential, choose Zenodo's separate draft-reservation workflow deliberately before release; GitHub integration does not by itself supply a pre-reserved manuscript DOI.
 
-The first-release checklist remains pending. A DOI is a persistent identifier, not peer review or formal certification. Material file corrections after publication should be handled as explicit version updates under [Zenodo's versioning guidance](https://help.zenodo.org/docs/deposit/manage-versions/).
+The candidate wording is now preprint v0.1.0; the mathematics, author, license and scope are unchanged. [Proposed release notes](RELEASE-NOTES-v0.1.0.md) accompany the checked candidate. The remaining step is authorization to publish that exact GitHub release, followed by verification of the resulting archive and DOI. A DOI is a persistent identifier, not peer review or formal certification. Material file corrections after publication should be handled as explicit version updates under [Zenodo's versioning guidance](https://help.zenodo.org/docs/deposit/manage-versions/).

@@ -1,7 +1,7 @@
 {
   "date": "2026-11-09",
-  "scope": "Assistant visual inspection of all rendered PDF pages; not independent mathematical review",
-  "pdf_sha256": "7cd7868d5063749cbf106a7a57e55ec206aa6996bf4857aba4dfa0ee51e813c4",
+  "scope": "Assistant visual inspection: changed pages 1 and 5 reinspected; renders 2-4 hash-identical to previously inspected pages; not independent mathematical review",
+  "pdf_sha256": "02f1bcb90a2e7dbdd662c5270d54322d9fd807729579f9822784254f9857cc61",
   "pages_inspected": [1, 2, 3, 4, 5],
   "render_dpi": 100,
   "clipping_or_overlap_observed": false,

@@ -44,7 +44,7 @@ def main():
                 '.gitattributes', '.gitignore', 'requirements.txt',
                 'manuscript/main.tex', 'manuscript/main.pdf',
                 'tools/build.py', 'tools/check_package.py', 'verification/build.json',
-                'verification/visual.json']
+                'verification/visual.json', 'publication/RELEASE-NOTES-v0.1.0.md']
     for filename in required:
         path = ROOT / filename
         assert path.is_file() and path.stat().st_size > 0, filename
