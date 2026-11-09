@@ -28,7 +28,16 @@ def main():
     assert creator['affiliation'] == author['affiliation']
     assert author['orcid'] == 'https://orcid.org/' + creator['orcid']
     assert zenodo['upload_type'] == 'publication' and zenodo['publication_type'] == 'preprint'
-    assert 'doi' not in zenodo and 'doi' not in preferred and 'date-released' not in citation
+    assert 'doi' not in zenodo
+    publication_path = ROOT / 'verification' / 'publication-v0.1.0.json'
+    publication = json.loads(publication_path.read_text(encoding='utf-8')) if publication_path.exists() else None
+    if publication:
+        assert publication['status'] == 'PUBLISHED_AND_VERIFIED'
+        assert preferred['doi'] == publication['version_doi']
+        assert str(citation['date-released']) == '2026-11-09'
+        assert publication['pdf_sha256'] == sha(ROOT / 'manuscript' / 'main.pdf')
+    else:
+        assert 'doi' not in preferred and 'date-released' not in citation
     assert 'publication_date' not in zenodo
     assert build['source_sha256'] == sha(ROOT / 'manuscript' / 'main.tex')
     assert build['pdf_sha256'] == sha(ROOT / 'manuscript' / 'main.pdf')
@@ -45,6 +54,8 @@ def main():
                 'manuscript/main.tex', 'manuscript/main.pdf',
                 'tools/build.py', 'tools/check_package.py', 'verification/build.json',
                 'verification/visual.json', 'publication/RELEASE-NOTES-v0.1.0.md']
+    if publication:
+        required.append('verification/publication-v0.1.0.json')
     for filename in required:
         path = ROOT / filename
         assert path.is_file() and path.stat().st_size > 0, filename
@@ -59,9 +70,10 @@ def main():
     receipt = {
         'status': 'PASS',
         'scope': 'Local files, hashes, links, author/title/version/license and Zenodo field consistency',
-        'not_performed': ['Zenodo ingestion', 'formal proof verification', 'independent peer review'],
+        'not_performed': ([] if publication else ['Zenodo ingestion']) + ['formal proof verification', 'independent peer review'],
         'files': {name: sha(ROOT / name) for name in sorted(required)},
-        'publication_record_created': False,
+        'publication_record_created': bool(publication),
+        'scope_note': 'Current working package integrity; publication receipt separately pins the immutable archive',
     }
     (ROOT / 'verification' / 'package.json').write_text(json.dumps(receipt, indent=2) + '\n', encoding='utf-8', newline='\n')
     print(json.dumps({'package': 'PASS', 'checked_files': len(required), 'pages': build['pages']}))

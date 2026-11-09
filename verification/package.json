@@ -2,7 +2,6 @@
   "status": "PASS",
   "scope": "Local files, hashes, links, author/title/version/license and Zenodo field consistency",
   "not_performed": [
-    "Zenodo ingestion",
     "formal proof verification",
     "independent peer review"
   ],
@@ -11,20 +10,22 @@
     ".gitignore": "3c9e63e3cd780bf7e478c2bd4c8d3dab0797bd1642567876f269f91a8ad13756",
     ".zenodo.json": "2cb2a48dd4a19e3bf9423b01176c99b359982f45f2759d78a47cb23502bf424f",
     "AGENTS.md": "69554918b8b721c8e6da71e2ecb5be9ce91a69d87cbb4c38e1bca34134fb0e18",
-    "CITATION.cff": "a75fd4de883a4e7e70c15f7338446bd7828ea072c44fb42ae189bb6b696fc27e",
+    "CITATION.cff": "2097fc5b9202f0660bf875402a37a67c0a9abf56765d9c203b2a129da0c0f4af",
     "LICENSE": "f573401864bded3da6af0cdcbb57c39c866f9a8bb68f9e2664d7d196c494877b",
     "LICENSES/CC-BY-4.0.txt": "9e5f1b3c610b9c2da5c313bf81d577a7d1acec686bdb0384edefa6df0f90cd94",
-    "README.md": "d6391bd20b516b41853836861d478b98ca6b8244c6ea5a984fd770a4900d2819",
-    "REVIEW.md": "5adf9dada535e4a6790a46d7134150ffc82727b896bb0d2299c0c5894ff023d2",
+    "README.md": "106ee93a2f3112af12e727ba1c8761a98fcd1991ad4922c82104c3b863226047",
+    "REVIEW.md": "d8195b2531108d134d55bace8f86b4b78b787984f65aa42b72a3b671411f30b6",
     "manuscript/main.pdf": "02f1bcb90a2e7dbdd662c5270d54322d9fd807729579f9822784254f9857cc61",
     "manuscript/main.tex": "1c64993d90ac28f283f5c24f325649a57e031037d9fcc2ae8577efa58958f383",
-    "publication/README.md": "00946b6ae857548c623b5e91920981cd1a4608553319850d737b0c447649da20",
+    "publication/README.md": "e6d779c9485401f432ae9d719026a56f5dcd1631acf3a39559b520c6147c1006",
     "publication/RELEASE-NOTES-v0.1.0.md": "d31f724f543e508c45f292d1c42cb0ecf4067a26af7cb15b05855eed07a1ca45",
     "requirements.txt": "362239862b0cf8455ec97ff15682c3a498854c7c1e4d4510e5751f58073044f0",
     "tools/build.py": "068fe79924dccfd964c52ff4deb5cc7cc5a5ea605d8748407e2ee73d85cb3038",
-    "tools/check_package.py": "6d00072a571f5f697054b067afbbc1a1a00736f970f44490c31736a315eca8bb",
+    "tools/check_package.py": "5814e32e52d21727d1440b1371e8cf288aab4d905fe16f246faadf8d4e014067",
     "verification/build.json": "6c5ad1f2caedb259ef6b4a09c0254f2b4649e02e486eb0c1ccfd032641b8de83",
+    "verification/publication-v0.1.0.json": "195fd5a28b9c07e03f85bb4d260e16d9b03032d6a24d78d3f6df1c765271b132",
     "verification/visual.json": "ff6e12e5ac5db6506dd3fd4eb75823a105ecb054ee0cdbe89d1da01d1fb1bb58"
   },
-  "publication_record_created": false
+  "publication_record_created": true,
+  "scope_note": "Current working package integrity; publication receipt separately pins the immutable archive"
 }

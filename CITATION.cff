@@ -1,8 +1,9 @@
 cff-version: 1.2.0
-message: "Please cite the preprint in preferred-citation. Until an archive DOI is verified, identify the repository commit."
+message: "Please cite the published preprint in preferred-citation using its version DOI."
 type: software
 title: "Noise smoothing sharpens a quantitative Aaronson-Ambainis influence bound: manuscript archive"
 version: 0.1.0
+date-released: '2026-11-09'
 authors:
   - family-names: Fredriksen
     given-names: Daniel
@@ -26,5 +27,6 @@ preferred-citation:
       affiliation: Quantyra Inc.
       orcid: https://orcid.org/0009-0002-9123-7435
   year: 2026
+  doi: 10.5281/zenodo.24088381
   notes: "Research preprint, version 0.1.0."
   url: https://github.com/Quantyra/aa-noise-influence/blob/main/manuscript/main.pdf
